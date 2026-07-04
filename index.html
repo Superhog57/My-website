@@ -5,115 +5,104 @@
 <title>Superhog57 | Official Website</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+    * {
+        box-sizing: border-box;
+    }
     body {
         margin: 0;
         font-family: Arial, sans-serif;
         background: #0d0d0d;
-        color: white;
+        color: #ffffff;
     }
     header {
         background: linear-gradient(135deg, #ff0040, #ff7b00);
-        padding: 40px 20px;
+        padding: 30px 15px;
         text-align: center;
     }
     header h1 {
-        font-size: 48px;
+        font-size: 40px;
         margin: 0;
         font-weight: 900;
+    }
+    header p {
+        margin: 8px 0 0;
+        font-size: 16px;
     }
     nav {
         background: #111;
         padding: 10px;
         text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
     }
     nav a {
         color: #ff7b00;
-        margin: 0 15px;
+        margin: 0 10px;
         text-decoration: none;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
     }
     nav a:hover {
         color: #ffffff;
     }
     section {
-        padding: 40px 20px;
+        padding: 30px 15px;
         max-width: 900px;
         margin: auto;
+    }
+    section h2 {
+        margin-top: 0;
+        font-size: 26px;
+        border-bottom: 2px solid #333;
+        padding-bottom: 8px;
     }
     a {
         color: #ff7b00;
         font-weight: bold;
     }
+    a:hover {
+        color: #ffd000;
+    }
     footer {
         background: #111;
-        padding: 20px;
+        padding: 15px;
         text-align: center;
         color: #aaa;
+        font-size: 14px;
+        margin-top: 20px;
     }
 
-    /* WORDLE STYLES */
-    #wordle {
-        margin-top: 40px;
+    /* Clock styles */
+    #clock-display {
+        font-size: 48px;
         text-align: center;
-    }
-    #game {
         margin-top: 20px;
-    }
-    .row {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 5px;
-    }
-    .tile {
-        width: 40px;
-        height: 40px;
-        border: 2px solid #444;
-        margin: 2px;
-        text-align: center;
-        line-height: 40px;
-        font-size: 24px;
-        text-transform: uppercase;
         font-weight: bold;
-        box-sizing: border-box;
+        text-shadow: 0 0 10px #ff7b00, 0 0 20px #ff0040;
     }
-    .correct {
-        background: #4caf50;
-        border-color: #4caf50;
-    }
-    .present {
-        background: #ffeb3b;
-        border-color: #ffeb3b;
-        color: #000;
-    }
-    .absent {
-        background: #555;
-        border-color: #555;
-    }
-    #input-area {
-        margin-top: 20px;
+    #date-display {
+        font-size: 22px;
         text-align: center;
+        margin-top: 10px;
+        color: #ff7b00;
     }
-    #guess {
-        padding: 8px;
-        font-size: 18px;
-        text-transform: uppercase;
-        width: 150px;
-        text-align: center;
-    }
-    #submit {
-        padding: 8px 16px;
-        font-size: 18px;
-        margin-left: 10px;
-        cursor: pointer;
-        background: #ff7b00;
-        border: none;
-        color: #000;
-        font-weight: bold;
-    }
-    #message {
-        margin-top: 15px;
-        font-size: 18px;
+
+    /* Mobile tweaks */
+    @media (max-width: 600px) {
+        header h1 {
+            font-size: 32px;
+        }
+        #clock-display {
+            font-size: 36px;
+        }
+        #date-display {
+            font-size: 18px;
+        }
+        nav a {
+            display: inline-block;
+            margin: 5px 8px;
+        }
     }
 </style>
 </head>
@@ -127,12 +116,12 @@
 <nav>
     <a href="#featured">Featured Video</a>
     <a href="#doodles">Google Doodles</a>
-    <a href="#wordle">Wordle</a>
+    <a href="#clock">Clock & Date</a>
 </nav>
 
 <section id="featured">
     <h2>Featured Video</h2>
-    <p>
+    <p style="text-align:center;">
         <a href="https://www.youtube.com/watch?v=CwgWtFrBxNo"
            target="_blank"
            style="font-size:20px;">
@@ -142,74 +131,74 @@
 </section>
 
 <section id="doodles">
-    <h2>Google Doodles</h2>
-    <p>Click below to browse every Google Doodle ever made:</p>
+    <h2>Google Doodles & Games</h2>
+    <p>Click below to browse every Google Doodle and play some classic Google games:</p>
 
-    <p style="font-size:22px;">
-        <a href="https://www.google.com/doodles" target="_blank" style="color:#ff7b00;">
+    <p style="font-size:20px; text-align:center; margin-top:15px;">
+        <a href="https://www.google.com/doodles" target="_blank">
             Visit the Official Google Doodles Archive
         </a>
     </p>
 
-    <hr style="margin:40px 0; border-color:#333;">
+    <hr style="margin:30px 0; border-color:#333;">
 
-    <h3 style="color:#ff0040; text-align:center;">
-        <a href="https://www.google.com/fbx?fbx=block_breaker" target="_blank" style="color:#ff0040;">
-            Play Google Block Breaker
-        </a>
-    </h3>
+    <div style="text-align:center; font-size:20px;">
+        <p>
+            <a href="https://www.google.com/fbx?fbx=block_breaker" target="_blank" style="color:#ff0040;">
+                Play Google Block Breaker
+            </a>
+        </p>
+        <p>
+            <a href="https://www.google.com/fbx?fbx=snake" target="_blank">
+                Play Google Snake
+            </a>
+        </p>
+    </div>
 </section>
-
-  <h3 style="color:#ff0040; text-align:center;">
-        <a href="https://www.google.com/fbx?fbx=snake_arcade&fbxga=1&hl=en&origin=www.google.com" target="_blank" style="color:#ff0040;">
-            Play Google Snake
-        </a>
-    </h3>
-<footer>
-    © 2026 Superhog57 — All Rights Reserved
-</footer>
 
 <section id="clock">
     <h2>Clock & Date</h2>
-
-    <div id="clock-display" 
-         style="font-size:48px; text-align:center; margin-top:20px; font-weight:bold;">
-    </div>
-
-    <div id="date-display" 
-         style="font-size:28px; text-align:center; margin-top:10px; color:#ff7b00;">
-    </div>
+    <div id="clock-display"></div>
+    <div id="date-display"></div>
 </section>
+
+<footer>
+    © 2026 Superhog57 — All Rights Reserved
+</footer>
 
 <script>
     function updateClock() {
         const now = new Date();
 
-        // Time
         let hours = now.getHours();
         let minutes = now.getMinutes();
         let seconds = now.getSeconds();
 
-        // Format with leading zeros
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+
         hours = hours < 10 ? "0" + hours : hours;
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        // Date
-        const options = { 
-            weekday: "long", 
-            year: "numeric", 
-            month: "long", 
-            day: "numeric" 
+        const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+
+        const options = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
         };
         const dateString = now.toLocaleDateString(undefined, options);
 
-        // Update HTML
-        document.getElementById("clock-display").textContent = `${hours}:${minutes}:${seconds}`;
+        document.getElementById("clock-display").textContent = timeString;
         document.getElementById("date-display").textContent = dateString;
     }
 
-    // Update every second
     setInterval(updateClock, 1000);
     updateClock();
 </script>
+
+</body>
+</html>
