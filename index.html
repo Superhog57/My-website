@@ -51,6 +51,70 @@
         text-align: center;
         color: #aaa;
     }
+
+    /* WORDLE STYLES */
+    #wordle {
+        margin-top: 40px;
+        text-align: center;
+    }
+    #game {
+        margin-top: 20px;
+    }
+    .row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+    .tile {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #444;
+        margin: 2px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+    .correct {
+        background: #4caf50;
+        border-color: #4caf50;
+    }
+    .present {
+        background: #ffeb3b;
+        border-color: #ffeb3b;
+        color: #000;
+    }
+    .absent {
+        background: #555;
+        border-color: #555;
+    }
+    #input-area {
+        margin-top: 20px;
+        text-align: center;
+    }
+    #guess {
+        padding: 8px;
+        font-size: 18px;
+        text-transform: uppercase;
+        width: 150px;
+        text-align: center;
+    }
+    #submit {
+        padding: 8px 16px;
+        font-size: 18px;
+        margin-left: 10px;
+        cursor: pointer;
+        background: #ff7b00;
+        border: none;
+        color: #000;
+        font-weight: bold;
+    }
+    #message {
+        margin-top: 15px;
+        font-size: 18px;
+    }
 </style>
 </head>
 <body>
@@ -63,6 +127,7 @@
 <nav>
     <a href="#featured">Featured Video</a>
     <a href="#doodles">Google Doodles</a>
+    <a href="#wordle">Wordle</a>
 </nav>
 
 <section id="featured">
@@ -89,22 +154,127 @@
     <hr style="margin:40px 0; border-color:#333;">
 
     <h3 style="color:#ff0040; text-align:center;">
-        <a href="https://www.google.com/fbx?fbx=block_breaker" target="_blank" style="color:#ff0040;">
+        <a href="https://www.google.com/fbx?fbx=blockbreaker" target="_blank" style="color:#ff0040;">
             Play Google Block Breaker
         </a>
     </h3>
+</section>
 
- <h3 style="color:#ff0040; text-align:center;">
-        <a href="https://www.google.com/fbx?fbx=snake_arcade&fbxga=1&hl=en&origin=www.google.com" target="_blank" style="color:#ff0040;">
-            Play Google Snake
-        </a>
-    </h3>
-    
+<section id="wordle">
+    <h2>Superhog57 Wordle</h2>
+    <div id="game"></div>
+
+    <div id="input-area">
+        <input id="guess" maxlength="5" placeholder="5-letter word">
+        <button id="submit">Guess</button>
+        <div id="message"></div>
+    </div>
 </section>
 
 <footer>
     © 2026 Superhog57 — All Rights Reserved
 </footer>
+
+<script>
+    const WORDS = ["CHAOS","HOGGY","BLOCK","TILES","SNAKE","GNOME","CRASH","LEVEL","BREAK","SUPER"];
+    const secret = WORDS[Math.floor(Math.random() * WORDS.length)];
+    const maxRows = 6;
+    let currentRow = 0;
+    let gameOver = false;
+
+    const game = document.getElementById("game");
+    const message = document.getElementById("message");
+    const guessInput = document.getElementById("guess");
+    const submitBtn = document.getElementById("submit");
+
+    for (let r = 0; r < maxRows; r++) {
+        const row = document.createElement("div");
+        row.className = "row";
+        for (let c = 0; c < 5; c++) {
+            const tile = document.createElement("div");
+            tile.className = "tile";
+            tile.dataset.row = r;
+            tile.dataset.col = c;
+            row.appendChild(tile);
+        }
+        game.appendChild(row);
+    }
+
+    function setRowLetters(rowIndex, guess) {
+        for (let i = 0; i < 5; i++) {
+            const tile = document.querySelector(`.tile[data-row="${rowIndex}"][data-col="${i}"]`);
+            tile.textContent = guess[i] || "";
+        }
+    }
+
+    function colorRow(rowIndex, guess) {
+        const secretArr = secret.split("");
+        const guessArr = guess.split("");
+        const used = Array(5).fill(false);
+
+        for (let i = 0; i < 5; i++) {
+            const tile = document.querySelector(`.tile[data-row="${rowIndex}"][data-col="${i}"]`);
+            if (guessArr[i] === secretArr[i]) {
+                tile.classList.add("correct");
+                used[i] = true;
+                guessArr[i] = null;
+            }
+        }
+
+        for (let i = 0; i < 5; i++) {
+            const tile = document.querySelector(`.tile[data-row="${rowIndex}"][data-col="${i}"]`);
+            if (tile.classList.contains("correct")) continue;
+            const letter = guessArr[i];
+            if (!letter) continue;
+
+            let found = false;
+            for (let j = 0; j < 5; j++) {
+                if (!used[j] && secretArr[j] === letter) {
+                    found = true;
+                    used[j] = true;
+                    break;
+                }
+            }
+            if (found) {
+                tile.classList.add("present");
+            } else {
+                tile.classList.add("absent");
+            }
+        }
+    }
+
+    function handleGuess() {
+        if (gameOver) return;
+
+        let guess = guessInput.value.trim().toUpperCase();
+        if (guess.length !== 5) {
+            message.textContent = "Enter a 5-letter word.";
+            return;
+        }
+
+        setRowLetters(currentRow, guess);
+        colorRow(currentRow, guess);
+
+        if (guess === secret) {
+            message.textContent = "You got it! The word was " + secret + ".";
+            gameOver = true;
+            return;
+        }
+
+        currentRow++;
+        guessInput.value = "";
+
+        if (currentRow >= maxRows) {
+            message.textContent = "Out of tries! The word was " + secret + ".";
+            gameOver = true;
+        }
+    }
+
+    submitBtn.addEventListener("click", handleGuess);
+    guessInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") handleGuess();
+    });
+</script>
 
 </body>
 </html>
