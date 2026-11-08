@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Superhog57</title>
+<title>Superhog57 Arcade</title>
 
 <style>
 html{
@@ -21,21 +21,16 @@ background:#0d0d0d;
 color:white;
 }
 
-/* Header */
 header{
 background:linear-gradient(135deg,#ff0040,#ff7b00);
 text-align:center;
 padding:40px 20px;
-animation:glow 4s infinite alternate;
+animation:glow 3s infinite alternate;
 }
 
 @keyframes glow{
-from{
-box-shadow:0 0 15px #ff0040;
-}
-to{
-box-shadow:0 0 35px #ff7b00;
-}
+from{box-shadow:0 0 15px #ff0040;}
+to{box-shadow:0 0 40px #ff7b00;}
 }
 
 header h1{
@@ -43,38 +38,31 @@ margin:0;
 font-size:48px;
 }
 
-header p{
-font-size:18px;
-margin-top:10px;
-}
-
-/* Nav */
 nav{
 position:sticky;
 top:0;
 background:#111;
 padding:12px;
 text-align:center;
-z-index:999;
+z-index:1000;
 }
 
 nav a{
-color:#ff7b00;
 text-decoration:none;
-margin:0 12px;
-font-weight:bold;
+color:#ff7b00;
 font-size:18px;
+font-weight:bold;
+margin:0 10px;
 }
 
 nav a:hover{
 color:white;
 }
 
-/* Sections */
 section{
-max-width:1000px;
+max-width:1100px;
 margin:auto;
-padding:40px 20px;
+padding:35px 20px;
 }
 
 h2{
@@ -82,131 +70,99 @@ border-bottom:2px solid #333;
 padding-bottom:10px;
 }
 
-/* Cards */
 .gameGrid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
-margin-top:25px;
+margin-top:20px;
 }
 
 .gameBtn{
 display:block;
-text-decoration:none;
-background:#1b1b1b;
-padding:25px;
+width:100%;
+background:#1c1c1c;
+border:none;
 border-radius:15px;
+padding:25px;
 text-align:center;
-color:#ff7b00;
 font-size:22px;
 font-weight:bold;
+color:#ff7b00;
+text-decoration:none;
+cursor:pointer;
 transition:.25s;
 }
 
 .gameBtn:hover{
 transform:scale(1.05);
-background:#252525;
+background:#292929;
 }
 
-.funBtn{
-background:#ff7b00;
-border:none;
-padding:15px 25px;
-border-radius:10px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-}
-
-#funMessage{
-font-size:24px;
-margin-top:20px;
+#output{
+margin-top:30px;
+font-size:30px;
+text-align:center;
 color:#ffd000;
+min-height:80px;
 }
 
-/* Clock */
-#clock-display{
+#clock{
 font-size:60px;
 text-align:center;
 font-weight:bold;
-margin-top:20px;
 text-shadow:
 0 0 10px #ff7b00,
 0 0 25px #ff0040;
 }
 
-#date-display{
+#date{
 text-align:center;
 font-size:24px;
-margin-top:12px;
 color:#ff7b00;
+margin-top:10px;
 }
 
-/* Footer */
 footer{
 background:#111;
-padding:20px;
 text-align:center;
+padding:20px;
+margin-top:30px;
 color:#999;
 }
 
-/* Mobile */
 @media(max-width:600px){
 
 header h1{
 font-size:34px;
 }
 
-#clock-display{
-font-size:42px;
+#clock{
+font-size:40px;
 }
 
-#date-display{
+#date{
 font-size:18px;
 }
 
-nav a{
-display:inline-block;
-margin:6px;
+.gameBtn{
+font-size:18px;
+padding:20px;
 }
 }
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>Superhog57</h1>
+<h1>Superhog57 Arcade</h1>
 <p>Games • Doodles • Fun Projects</p>
 </header>
 
 <nav>
-<a href="#home">Home</a>
 <a href="#games">Games</a>
-<a href="#clock">Clock & Date</a>
+<a href="#clockArea">Clock</a>
 </nav>
-
-<section id="home">
-
-<h2>Welcome to Superhog57!</h2>
-
-<p style="font-size:20px;text-align:center;">
-Home of fun games, creative projects, experiments,
-Google Doodles, and more.
-</p>
-
-<div style="text-align:center;margin-top:25px;">
-
-<button class="funBtn" onclick="randomMessage()">
-Random Fun Message
-</button>
-
-<p id="funMessage">
-Click the button!
-</p>
-
-</div>
-
-</section>
 
 <section id="games">
 
@@ -217,7 +173,7 @@ Click the button!
 <a class="gameBtn"
 href="https://www.google.com/doodles"
 target="_blank">
-🎮 Google Doodles Archive
+🎮 Doodles Archive
 </a>
 
 <a class="gameBtn"
@@ -229,77 +185,214 @@ target="_blank">
 <a class="gameBtn"
 href="https://www.google.com/fbx?fbx=blockbreaker"
 target="_blank">
-🧱 Google Block Breaker
+🧱 Block Breaker
 </a>
 
 </div>
 
+<h2 style="margin-top:50px;">
+Built-In Arcade Games
+</h2>
+
+<div class="gameGrid">
+
+<button class="gameBtn" onclick="coinFlip()">
+🪙 Coin Flip
+</button>
+
+<button class="gameBtn" onclick="rollDice()">
+🎲 Roll Dice
+</button>
+
+<button class="gameBtn" onclick="guessNumber()">
+🔢 Number Guesser
+</button>
+
+<button class="gameBtn" onclick="startReaction()">
+⚡ Reaction Test
+</button>
+
+<button class="gameBtn" onclick="rockPaperScissors()">
+✊ Rock Paper Scissors
+</button>
+
+<button class="gameBtn" onclick="changeColor()">
+🎨 Random Color
+</button>
+
+</div>
+
+<div style="text-align:center;margin-top:40px;">
+
+<h3>🎯 Click Challenge</h3>
+
+<button class="gameBtn"
+onclick="clickScore()"
+style="max-width:300px;margin:auto;">
+Click Me!
+</button>
+
+<p id="clicks">Clicks: 0</p>
+
+</div>
+
+<div id="output">
+Ready to play!
+</div>
+
 </section>
 
-<section id="clock">
+<section id="clockArea">
 
 <h2>Clock & Date</h2>
 
-<div id="clock-display"></div>
-<div id="date-display"></div>
+<div id="clock"></div>
+<div id="date"></div>
 
 </section>
 
 <footer>
-© 2026 Superhog57
+© Superhog57 Arcade
 </footer>
 
 <script>
 
-const messages = [
-"Welcome to Superhog57!",
-"Try Google Snake!",
-"Block Breaker is waiting...",
-"Keep creating awesome things!",
-"Have an amazing day!",
-"Today's a great day to build games!",
-"Google Doodles are awesome!",
-"Chaos Mode Activated!",
-"Superhog57 Rules!",
-"Ready for a challenge?"
-];
+let clickCount=0;
 
-function randomMessage(){
-document.getElementById("funMessage").textContent =
-messages[Math.floor(Math.random()*messages.length)];
+function clickScore(){
+clickCount++;
+document.getElementById("clicks").textContent=
+"Clicks: "+clickCount;
+}
+
+function coinFlip(){
+const result=Math.random()<0.5?"Heads":"Tails";
+document.getElementById("output").textContent=
+"🪙 "+result;
+}
+
+function rollDice(){
+const roll=Math.floor(Math.random()*6)+1;
+document.getElementById("output").textContent=
+"🎲 You rolled "+roll;
+}
+
+function guessNumber(){
+
+const answer=Math.floor(Math.random()*10)+1;
+
+const guess=prompt(
+"Guess a number from 1 to 10"
+);
+
+if(Number(guess)===answer){
+
+document.getElementById("output").textContent=
+"✅ Correct!";
+
+}
+else{
+
+document.getElementById("output").textContent=
+"❌ Wrong! Number was "+answer;
+
+}
+}
+
+let reactionStart=0;
+
+function startReaction(){
+
+document.getElementById("output").textContent=
+"Wait...";
+
+const wait=Math.random()*3000+1000;
+
+setTimeout(()=>{
+
+document.getElementById("output").innerHTML=
+`<button class="gameBtn"
+onclick="stopReaction()">
+CLICK NOW!
+</button>`;
+
+reactionStart=Date.now();
+
+},wait);
+}
+
+function stopReaction(){
+
+const reaction=
+Date.now()-reactionStart;
+
+document.getElementById("output").textContent=
+"⚡ "+reaction+" ms";
+
+}
+
+function rockPaperScissors(){
+
+const options=["Rock","Paper","Scissors"];
+
+const cpu=
+options[Math.floor(Math.random()*3)];
+
+const player=
+prompt("Rock, Paper, or Scissors?");
+
+if(!player)return;
+
+document.getElementById("output").textContent=
+"✊ You: "+player+
+" | CPU: "+cpu;
+
+}
+
+function changeColor(){
+
+const color=
+"#"+Math.floor(Math.random()*16777215)
+.toString(16);
+
+document.body.style.background=color;
+
+document.getElementById("output").textContent=
+"🎨 Color: "+color;
+
 }
 
 function updateClock(){
 
-const now = new Date();
+const now=new Date();
 
-let hours = now.getHours();
-let minutes = now.getMinutes();
-let seconds = now.getSeconds();
+let h=now.getHours();
+let m=now.getMinutes();
+let s=now.getSeconds();
 
-const ampm = hours >= 12 ? "PM" : "AM";
+const ampm=h>=12?"PM":"AM";
 
-hours = hours % 12;
-hours = hours || 12;
+h=h%12||12;
 
-hours = String(hours).padStart(2,"0");
-minutes = String(minutes).padStart(2,"0");
-seconds = String(seconds).padStart(2,"0");
+h=String(h).padStart(2,"0");
+m=String(m).padStart(2,"0");
+s=String(s).padStart(2,"0");
 
-document.getElementById("clock-display").textContent =
-`${hours}:${minutes}:${seconds} ${ampm}`;
+document.getElementById("clock").textContent=
+`${h}:${m}:${s} ${ampm}`;
 
-document.getElementById("date-display").textContent =
+document.getElementById("date").textContent=
 now.toLocaleDateString(undefined,{
 weekday:"long",
-year:"numeric",
 month:"long",
-day:"numeric"
+day:"numeric",
+year:"numeric"
 });
+
 }
 
-setInterval(updateClock,1000);
 updateClock();
+setInterval(updateClock,1000);
 
 </script>
 
