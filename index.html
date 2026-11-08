@@ -2,206 +2,305 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Superhog57 | Official Website</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Superhog57</title>
 
 <style>
-    * { box-sizing: border-box; }
+html{
+scroll-behavior:smooth;
+}
 
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #0d0d0d;
-        color: #ffffff;
-    }
+*{
+box-sizing:border-box;
+}
 
-    /* HEADER */
-    header {
-        background: linear-gradient(135deg, #ff0040, #ff7b00);
-        padding: 35px 20px;
-        text-align: center;
-    }
-    header h1 {
-        font-size: 42px;
-        margin: 0;
-        font-weight: 900;
-    }
-    header p {
-        margin: 10px 0 0;
-        font-size: 18px;
-    }
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0d0d0d;
+color:white;
+}
 
-    /* NAVIGATION */
-    nav {
-        background: #111;
-        padding: 12px;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-    nav a {
-        color: #ff7b00;
-        margin: 0 12px;
-        text-decoration: none;
-        font-size: 17px;
-        font-weight: bold;
-    }
-    nav a:hover {
-        color: #ffffff;
-    }
+/* Header */
+header{
+background:linear-gradient(135deg,#ff0040,#ff7b00);
+text-align:center;
+padding:40px 20px;
+animation:glow 4s infinite alternate;
+}
 
-    /* SECTIONS */
-    section {
-        padding: 35px 20px;
-        max-width: 900px;
-        margin: auto;
-    }
-    section h2 {
-        margin-top: 0;
-        font-size: 28px;
-        border-bottom: 2px solid #333;
-        padding-bottom: 8px;
-    }
+@keyframes glow{
+from{
+box-shadow:0 0 15px #ff0040;
+}
+to{
+box-shadow:0 0 35px #ff7b00;
+}
+}
 
-    /* LINKS */
-    a {
-        color: #ff7b00;
-        font-weight: bold;
-    }
-    a:hover {
-        color: #ffd000;
-    }
+header h1{
+margin:0;
+font-size:48px;
+}
 
-    /* FOOTER */
-    footer {
-        background: #111;
-        padding: 18px;
-        text-align: center;
-        color: #aaa;
-        font-size: 14px;
-        margin-top: 30px;
-    }
+header p{
+font-size:18px;
+margin-top:10px;
+}
 
-    /* CLOCK */
-    #clock-display {
-        font-size: 50px;
-        text-align: center;
-        margin-top: 25px;
-        font-weight: bold;
-        text-shadow: 0 0 12px #ff7b00, 0 0 25px #ff0040;
-    }
-    #date-display {
-        font-size: 24px;
-        text-align: center;
-        margin-top: 12px;
-        color: #ff7b00;
-    }
+/* Nav */
+nav{
+position:sticky;
+top:0;
+background:#111;
+padding:12px;
+text-align:center;
+z-index:999;
+}
 
-    /* MOBILE */
-    @media (max-width: 600px) {
-        header h1 { font-size: 34px; }
-        #clock-display { font-size: 38px; }
-        #date-display { font-size: 18px; }
-        nav a {
-            display: inline-block;
-            margin: 6px 10px;
-        }
-    }
+nav a{
+color:#ff7b00;
+text-decoration:none;
+margin:0 12px;
+font-weight:bold;
+font-size:18px;
+}
+
+nav a:hover{
+color:white;
+}
+
+/* Sections */
+section{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+h2{
+border-bottom:2px solid #333;
+padding-bottom:10px;
+}
+
+/* Cards */
+.gameGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:25px;
+}
+
+.gameBtn{
+display:block;
+text-decoration:none;
+background:#1b1b1b;
+padding:25px;
+border-radius:15px;
+text-align:center;
+color:#ff7b00;
+font-size:22px;
+font-weight:bold;
+transition:.25s;
+}
+
+.gameBtn:hover{
+transform:scale(1.05);
+background:#252525;
+}
+
+.funBtn{
+background:#ff7b00;
+border:none;
+padding:15px 25px;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+#funMessage{
+font-size:24px;
+margin-top:20px;
+color:#ffd000;
+}
+
+/* Clock */
+#clock-display{
+font-size:60px;
+text-align:center;
+font-weight:bold;
+margin-top:20px;
+text-shadow:
+0 0 10px #ff7b00,
+0 0 25px #ff0040;
+}
+
+#date-display{
+text-align:center;
+font-size:24px;
+margin-top:12px;
+color:#ff7b00;
+}
+
+/* Footer */
+footer{
+background:#111;
+padding:20px;
+text-align:center;
+color:#999;
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+header h1{
+font-size:34px;
+}
+
+#clock-display{
+font-size:42px;
+}
+
+#date-display{
+font-size:18px;
+}
+
+nav a{
+display:inline-block;
+margin:6px;
+}
+}
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Superhog57</h1>
-    <p>The Official Website of the Superhog57 YouTube Channel</p>
+<h1>Superhog57</h1>
+<p>Games • Doodles • Fun Projects</p>
 </header>
 
 <nav>
-    <a href="#featured">Featured Video</a>
-    <a href="#doodles">Google Doodles</a>
-    <a href="#clock">Clock & Date</a>
+<a href="#home">Home</a>
+<a href="#games">Games</a>
+<a href="#clock">Clock & Date</a>
 </nav>
 
-<section id="featured">
-    <h2>Featured Video</h2>
-    <p style="text-align:center;">
-        <a href="https://www.youtube.com/watch?v=CwgWtFrBxNo"
-           target="_blank"
-           style="font-size:22px;">
-           Watch the Featured Video on YouTube
-        </a>
-    </p>
+<section id="home">
+
+<h2>Welcome to Superhog57!</h2>
+
+<p style="font-size:20px;text-align:center;">
+Home of fun games, creative projects, experiments,
+Google Doodles, and more.
+</p>
+
+<div style="text-align:center;margin-top:25px;">
+
+<button class="funBtn" onclick="randomMessage()">
+Random Fun Message
+</button>
+
+<p id="funMessage">
+Click the button!
+</p>
+
+</div>
+
 </section>
 
-<section id="doodles">
-    <h2>Google Doodles & Games</h2>
-    <p>Explore classic Google games and the full doodle archive:</p>
+<section id="games">
 
-    <p style="font-size:22px; text-align:center; margin-top:18px;">
-        <a href="https://www.google.com/doodles" target="_blank">
-            Visit the Official Google Doodles Archive
-        </a>
-    </p>
+<h2>Google Games</h2>
 
-    <hr style="margin:35px 0; border-color:#333;">
+<div class="gameGrid">
 
-    <div style="text-align:center; font-size:22px;">
-        <p>
-            <a href="https://www.google.com/fbx?fbx=block_breaker" target="_blank" style="color:#ff0040;">
-                Play Google Block Breaker
-            </a>
-        </p>
-        <p>
-            <a href="https://www.google.com/fbx?fbx=snake_arcade&fbxga=1&hl=en&origin=www.google.com" target="_blank">
-                Play Google Snake
-            </a>
-        </p>
-    </div>
+<a class="gameBtn"
+href="https://www.google.com/doodles"
+target="_blank">
+🎮 Google Doodles Archive
+</a>
+
+<a class="gameBtn"
+href="https://www.google.com/fbx?fbx=snake"
+target="_blank">
+🐍 Google Snake
+</a>
+
+<a class="gameBtn"
+href="https://www.google.com/fbx?fbx=blockbreaker"
+target="_blank">
+🧱 Google Block Breaker
+</a>
+
+</div>
+
 </section>
 
 <section id="clock">
-    <h2>Clock & Date</h2>
-    <div id="clock-display"></div>
-    <div id="date-display"></div>
+
+<h2>Clock & Date</h2>
+
+<div id="clock-display"></div>
+<div id="date-display"></div>
+
 </section>
 
 <footer>
-    © 2026 Superhog57 — All Rights Reserved
+© 2026 Superhog57
 </footer>
 
 <script>
-    function updateClock() {
-        const now = new Date();
 
-        let hours = now.getHours();
-        let minutes = now.getMinutes();
-        let seconds = now.getSeconds();
+const messages = [
+"Welcome to Superhog57!",
+"Try Google Snake!",
+"Block Breaker is waiting...",
+"Keep creating awesome things!",
+"Have an amazing day!",
+"Today's a great day to build games!",
+"Google Doodles are awesome!",
+"Chaos Mode Activated!",
+"Superhog57 Rules!",
+"Ready for a challenge?"
+];
 
-        const ampm = hours >= 12 ? "PM" : "AM";
-        hours = hours % 12;
-        hours = hours ? hours : 12;
+function randomMessage(){
+document.getElementById("funMessage").textContent =
+messages[Math.floor(Math.random()*messages.length)];
+}
 
-        hours = hours < 10 ? "0" + hours : hours;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+function updateClock(){
 
-        const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+const now = new Date();
 
-        const options = {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-        };
-        const dateString = now.toLocaleDateString(undefined, options);
+let hours = now.getHours();
+let minutes = now.getMinutes();
+let seconds = now.getSeconds();
 
-        document.getElementById("clock-display").textContent = timeString;
-        document.getElementById("date-display").textContent = dateString;
-    }
+const ampm = hours >= 12 ? "PM" : "AM";
 
-    setInterval(updateClock, 1000);
-    updateClock();
+hours = hours % 12;
+hours = hours || 12;
+
+hours = String(hours).padStart(2,"0");
+minutes = String(minutes).padStart(2,"0");
+seconds = String(seconds).padStart(2,"0");
+
+document.getElementById("clock-display").textContent =
+`${hours}:${minutes}:${seconds} ${ampm}`;
+
+document.getElementById("date-display").textContent =
+now.toLocaleDateString(undefined,{
+weekday:"long",
+year:"numeric",
+month:"long",
+day:"numeric"
+});
+}
+
+setInterval(updateClock,1000);
+updateClock();
+
 </script>
 
 </body>
